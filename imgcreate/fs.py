@@ -104,7 +104,7 @@ def squashfs_compression_type(sqfs_img):
 
 def mksquashfs(in_dir, out_img, compress_args, ops=[]):
 
-    args = ['mksquashfs', in_dir, out_img]
+    args = ['mksquashfs', '-action', 'align(4K)@filesize(>=32K)', in_dir, out_img]
     # Allow gzip to work for older versions of mksquashfs
     if compress_args and compress_args != 'gzip':
         if compress_args in ('xz1m', 'xz1M'):
